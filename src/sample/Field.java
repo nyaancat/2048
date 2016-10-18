@@ -1,126 +1,119 @@
 package sample;
 
 
+import java.util.Random;
+import java.util.Vector;
+
 public class Field {
-    public int[][] field_mas = new int [3][3];
-    public int count = 0;
+
+    public int count = 0; // количество занятных ячеек
+    private int mSize = 4;
+    public int[][] fieldArr = new int [mSize][mSize];
 
     Field()
     {
-        field_mas[0][0] = 0;
-        field_mas[0][1] = 4;
-        field_mas[0][2] = 0;
-        field_mas[1][0] = 0;
-        field_mas[1][1] = 2;
-        field_mas[1][2] = 0;
-        field_mas[2][0] = 0;
-        field_mas[2][1] = 2;
-        field_mas[2][2] = 0;
-
-        System.out.println(field_mas[2][0]);
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++)
+                fieldArr[i][j] = 0;
     }
 
-    public int[] offset(int[] mas) {
-       // System.out.println("got it");
-        int[] res_mas = new int[3];
+    //делает сдвиг массива влево с "склеиванием" одинаковых элементов
+    public int[] offset(int[] arr) {
+        int[] result = new int[mSize];
         int j = 1;
-        res_mas[0] = mas[0];
-        boolean flag = false;
-        for (int i = 1; i < 3; i++)
-            if (mas[i] != 0)
+        result[0] = arr[0];
+        boolean [] flag = new boolean [mSize];
+
+        for (int i = 0; i < mSize; i++)
+            flag[i] = false;
+
+        for (int i = 1; i < mSize; i++)
+            if (arr[i] != 0)
             {
-                if ((res_mas[j - 1] == mas[i] || res_mas [j - 1] == 0) && !flag) {
-                    if (res_mas[j - 1] != 0)
-                        flag = true;
-                    res_mas[j - 1] += mas[i];
+                if ((result[j - 1] == arr[i] || result [j - 1] == 0) && !flag[j - 1]) {
+                    if (result[j - 1] != 0)
+                        flag[j - 1] = true;
+                    result[j - 1] += arr[i];
 
                 }
                 else
                 {
-                    res_mas[j] = mas[i];
+                    result[j] = arr[i];
                     j++;
                 }
             }
 
-        for (int i = j + 1; i < 3; i++)
-            res_mas[j] = 0;
+        for (int i = j + 1; i < mSize; i++)
+            result[j] = 0;
 
-        return res_mas;
+        return result;
     }
 
-    public int[][] down ()
-    {
-        int [] mas1 = {field_mas[2][0],
-                field_mas[1][0],
-                field_mas[0][0]};
+    public int[][] down () {
+        for (int i = 0; i < mSize; i++) {
+            int [] arr = new int[mSize];
+            for (int j = mSize - 1; j >= 0; j--)
+                arr[j] = fieldArr[j][i];
+            arr = offset(arr);
 
-        mas1 = offset(mas1);
+            for (int j = 0; j < mSize; j++)
+                fieldArr[j][i] = arr[j];
+        }
 
-
-        int [] mas2 = {field_mas[2][1],
-                field_mas[1][1],
-                field_mas[0][1]};
-        mas2 = offset(mas2);
-
-        int [] mas3 = {field_mas[2][2],
-                field_mas[1][2],
-                field_mas[0][2]};
-
-        mas3 = offset(mas3);
-
-        for (int i = 0; i < 3; i++)
-            field_mas[i][0] = mas1[2 - i];
-        for (int i = 0; i < 3; i++)
-            field_mas[i][1] = mas2[2 - i];
-        for (int i = 0; i < 3; i++)
-            field_mas[i][2] = mas3[2 - i];
-
-        return field_mas;
+        return fieldArr;
     }
 
-    public int[][] up ()
-    {
-        int[][] opp_field = down().clone();
-        for (int i = 0; i < 3; i++)
-            opp_field[i] = field_mas[i].clone();
+    public int[][] up () {
+        int[][] oppField = down().clone();
+        for (int i = 0; i < mSize; i++)
+            oppField[i] = fieldArr[i].clone();
 
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++)
+                fieldArr[2 - i][j] = oppField[i][j];
 
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                field_mas[2 - i][j] = opp_field[i][j];
-
-        return field_mas;
+        return fieldArr;
     }
 
-    public int[][] left ()
-    {
-        int [] mas1 = field_mas[0];
-        mas1 = offset(mas1);
+    public int[][] left () {
+        for (int i = 0; i < mSize; i++) {
+            int [] arr = fieldArr[i];
+            arr = offset(arr);
+            fieldArr[i] = arr;
+        }
 
-        int [] mas2 = field_mas[1];
-        mas2 = offset(mas2);
-
-        int [] mas3 = field_mas[2];
-        mas3 = offset(mas3);
-
-        field_mas[0] = mas1;
-        field_mas[1] = mas2;
-        field_mas[2] = mas3;
-
-        return field_mas;
+        return fieldArr;
     }
 
-    public int[][] right ()
-    {
-        int[][] opp_field = left().clone();
-        for (int i = 0; i < 3; i++)
-            opp_field[i] = field_mas[i].clone();
+    public int[][] right () {
+        int[][] oppField = left().clone();
+        for (int i = 0; i < mSize; i++)
+            oppField[i] = fieldArr[i].clone();
 
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++)
+                fieldArr[i][mSize - 1 - j] = oppField[i][j];
 
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++)
-                field_mas[i][2 - j] = opp_field[i][j];
+        return fieldArr;
+    }
 
-        return field_mas;
+    public int[][] newNumber() {
+        //Vector blank = new Vector();
+        Random r = new Random(System.currentTimeMillis());
+        int num = r.nextInt(mSize * mSize - count + 1);
+        int k = 0;
+
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++) {
+                if (fieldArr[i][j] == 0){
+                    if (k == num) {
+                        fieldArr[i][j] = 2;
+                        return fieldArr;
+                    }
+                    else k++;
+                }
+            }
+
+            return fieldArr;
     }
 }

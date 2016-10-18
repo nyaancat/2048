@@ -21,11 +21,13 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label fx:id="lbl_2_2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
@@ -46,6 +48,13 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Label>
+                  <Label fx:id="lbl_3_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl_2_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_1_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Label fx:id="lbl_0_3" text="0" GridPane.columnIndex="3" />
+                  <Label fx:id="lbl_3_2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl_3_1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lbl_3_0" text="0" GridPane.rowIndex="3" />
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -56,16 +65,16 @@
             </GridPane>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0">
                <top>
-                  <Button mnemonicParsing="false" onAction="#btnUp_click" text="Up" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#btnUpClick" text="Up" BorderPane.alignment="CENTER" />
                </top>
                <left>
-                  <Button mnemonicParsing="false" onAction="#btnLeft_click" text="Left" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#btnLeftClick" text="Left" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <Button mnemonicParsing="false" onAction="#btnRight_click" text="Right" BorderPane.alignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#btnRightClick" text="Right" BorderPane.alignment="CENTER" />
                </right>
                <bottom>
-                  <Button mnemonicParsing="false" onAction="#btnDown_click" text="Down" BorderPane.alignment="CENTER">
+                  <Button mnemonicParsing="false" onAction="#btnDownClick" text="Down" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </BorderPane.margin>
