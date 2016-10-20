@@ -1,13 +1,14 @@
 package sample;
 
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Vector;
 
 public class Field {
 
     public int count = 0; // количество занятных ячеек
-    private int mSize = 4;
+    private int mSize = 4; //размер поля
     public int[][] fieldArr = new int [mSize][mSize];
 
     Field()
@@ -17,8 +18,17 @@ public class Field {
                 fieldArr[i][j] = 0;
     }
 
+    //обновление количества занятых ячеек. выполняется после каждой попытки сдвига
+    private void refreshCount()
+    {
+        count = 0;
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++)
+                if (fieldArr[i][j] > 0) count++;
+
+    }
     //делает сдвиг массива влево с "склеиванием" одинаковых элементов
-    public int[] offset(int[] arr) {
+    private int[] offset(int[] arr) {
         int[] result = new int[mSize];
         int j = 1;
         result[0] = arr[0];
@@ -29,13 +39,12 @@ public class Field {
 
         for (int i = 1; i < mSize; i++)
             if (arr[i] != 0)
-            {
+            {//если два соседних элемента одинаковые и в этой ячейке еще не происходило сложение
                 if ((result[j - 1] == arr[i] || result [j - 1] == 0) && !flag[j - 1]) {
                     if (result[j - 1] != 0)
                         flag[j - 1] = true;
                     result[j - 1] += arr[i];
-
-                }
+                 }
                 else
                 {
                     result[j] = arr[i];
@@ -49,71 +58,106 @@ public class Field {
         return result;
     }
 
-    public int[][] down () {
+    //сдвиг вниз
+    public boolean down () {
+        boolean flag = false;
+
+        for (int i = 0; i < mSize; i++) {
+            int [] arr = new int[mSize];
+            for (int j = mSize - 1; j >= 0; j--)
+                arr[mSize - j - 1] = fieldArr[j][i];
+            arr = offset(arr);
+
+            //обновление поля и проверка на наличие изменений
+            for (int j = 0; j < mSize; j++) {
+                if (fieldArr[j][i] != arr[mSize - 1 - j]){
+                    flag = true;
+                    fieldArr[j][i] = arr[mSize - 1 - j];
+                }
+            }
+        }
+        refreshCount();
+        return flag;
+    }
+
+    //сдвиг вверх
+    public boolean up () {
+        boolean flag = false;
+
         for (int i = 0; i < mSize; i++) {
             int [] arr = new int[mSize];
             for (int j = mSize - 1; j >= 0; j--)
                 arr[j] = fieldArr[j][i];
             arr = offset(arr);
 
+            //обновление поля и проверка на наличие изменений
             for (int j = 0; j < mSize; j++)
-                fieldArr[j][i] = arr[j];
+                if (fieldArr[j][i] != arr[j]){
+                    fieldArr[j][i] = arr[j];
+                    flag = true;
+                }
         }
-
-        return fieldArr;
+        refreshCount();
+        return flag;
     }
 
-    public int[][] up () {
-        int[][] oppField = down().clone();
-        for (int i = 0; i < mSize; i++)
-            oppField[i] = fieldArr[i].clone();
-
-        for (int i = 0; i < mSize; i++)
-            for (int j = 0; j < mSize; j++)
-                fieldArr[2 - i][j] = oppField[i][j];
-
-        return fieldArr;
-    }
-
-    public int[][] left () {
+    //сдвиг влево
+    public boolean left () {
+        boolean flag = false;
         for (int i = 0; i < mSize; i++) {
             int [] arr = fieldArr[i];
             arr = offset(arr);
-            fieldArr[i] = arr;
+
+            //обновление поля и проверка на наличие изменений
+            if (!Arrays.equals(fieldArr[i], arr)){
+                fieldArr[i] = arr;
+                flag = true;
+            }
+        }
+        refreshCount();
+        return flag;
+    }
+
+    //сдвиг вправо
+    public boolean right () {
+        boolean flag = false;
+
+        for (int i = 0; i < mSize; i++) {
+            int [] arr = new int [mSize];
+            for (int j = 0; j < mSize; j++)
+                arr[j] = fieldArr[i][mSize - 1 - j];
+            arr = offset(arr);
+
+            //обновление поля и проверка на наличие изменений
+            for (int j = 0; j < mSize; j++)
+                if (fieldArr[i][j] != arr[mSize - j - 1]){
+                    fieldArr[i][j] = arr[mSize - j - 1];
+                    flag = true;
+                }
         }
 
-        return fieldArr;
+        refreshCount();
+        return flag;
     }
 
-    public int[][] right () {
-        int[][] oppField = left().clone();
-        for (int i = 0; i < mSize; i++)
-            oppField[i] = fieldArr[i].clone();
-
-        for (int i = 0; i < mSize; i++)
-            for (int j = 0; j < mSize; j++)
-                fieldArr[i][mSize - 1 - j] = oppField[i][j];
-
-        return fieldArr;
-    }
-
-    public int[][] newNumber() {
-        //Vector blank = new Vector();
+    //добавление 2 в случайную свободную ячейку. выполняется после любого успешного сдвига
+    public void newNumber() {
         Random r = new Random(System.currentTimeMillis());
-        int num = r.nextInt(mSize * mSize - count + 1);
+        //System.out.println("count: " + count);
+        int num = r.nextInt(mSize * mSize - count);
         int k = 0;
+
 
         for (int i = 0; i < mSize; i++)
             for (int j = 0; j < mSize; j++) {
                 if (fieldArr[i][j] == 0){
                     if (k == num) {
                         fieldArr[i][j] = 2;
-                        return fieldArr;
+                        count++;
+                        return;
                     }
                     else k++;
                 }
             }
-
-            return fieldArr;
     }
 }

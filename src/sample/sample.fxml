@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" hgap="10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
@@ -30,31 +31,79 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label fx:id="lbl_2_2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl_1_1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl_2_0" text="0" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl_1_0" text="0" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl_2_1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl_1_2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl_0_2" text="0" GridPane.columnIndex="2" />
-                  <Label fx:id="lbl_0_1" text="0" GridPane.columnIndex="1">
+                  <Label fx:id="lbl_2_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_1_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_2_0" text=" " GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_1_0" text=" " GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_2_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_1_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_0_2" text=" " GridPane.columnIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_0_1" text=" " GridPane.columnIndex="1">
                      <GridPane.margin>
                         <Insets />
-                     </GridPane.margin></Label>
-                  <Label fx:id="lbl_0_0" text="0" textAlignment="CENTER">
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_0_0" text=" " textAlignment="CENTER">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <GridPane.margin>
                         <Insets />
-                     </GridPane.margin></Label>
-                  <Label fx:id="lbl_3_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl_2_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label fx:id="lbl_1_3" text="0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <Label fx:id="lbl_0_3" text="0" GridPane.columnIndex="3" />
-                  <Label fx:id="lbl_3_2" text="0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl_3_1" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="lbl_3_0" text="0" GridPane.rowIndex="3" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_3_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_2_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_1_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_0_3" text=" " GridPane.columnIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_3_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_3_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lbl_3_0" text=" " GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

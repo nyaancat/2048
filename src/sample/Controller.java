@@ -3,6 +3,7 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class Controller {
     @FXML
@@ -62,35 +63,45 @@ public class Controller {
       lblArr[3][1] = lbl_3_1;
       lblArr[3][2] = lbl_3_2;
 
-      for (int i = 0; i < mSize; i++)
-          for (int j = 0; j < mSize; j++)
-              lblArr[i][j].setText(Integer.toString(field.fieldArr[i][j]));
+     //две заполненные стартовые ячейи
+     field.newNumber();
+     field.newNumber();
 
+     setField();
   }
 
-    public void setField (int fieldArr[][]) {
+    private void setField () {
         for (int i = 0; i < mSize; i++)
-            for (int j = 0; j < mSize; j++)
-                lblArr[i][j].setText(Integer.toString(fieldArr[i][j]));
+            for (int j = 0; j < mSize; j++) {
+                if (field.fieldArr[i][j] != 0)
+                    lblArr[i][j].setText(Integer.toString(field.fieldArr[i][j]));
+                else //оищение несоответствующих действительности надписей
+                    if (Integer.toString(field.fieldArr[i][j]) != lblArr[i][j].getText())
+                        lblArr[i][j].setText(" ");
+            }
     }
 
     public void btnDownClick(ActionEvent actionEvent) {
-        int [][] arr = field.down();
-        setField(arr);
+        if (field.down())
+            field.newNumber();
+        setField();
     }
 
     public void btnUpClick(ActionEvent actionEvent) {
-        int [][] arr = field.up();
-        setField(arr);
+       if (field.up())
+           field.newNumber();
+        setField();
     }
 
     public void btnRightClick(ActionEvent actionEvent) {
-        int [][] arr = field.right();
-        setField(arr);
+        if (field.right())
+            field.newNumber();
+        setField();
     }
 
     public void btnLeftClick(ActionEvent actionEvent) {
-        int [][] arr = field.left();
-        setField(arr);
+        if (field.left())
+            field.newNumber();
+        setField();
     }
 }
