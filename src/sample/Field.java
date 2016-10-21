@@ -7,9 +7,10 @@ import java.util.Vector;
 
 public class Field {
 
-    public int count = 0; // количество занятных ячеек
+    private int count = 0; // количество занятных ячеек
     private int mSize = 4; //размер поля
     public int[][] fieldArr = new int [mSize][mSize];
+    public boolean gameOver = false;
 
     Field()
     {
@@ -26,7 +27,35 @@ public class Field {
             for (int j = 0; j < mSize; j++)
                 if (fieldArr[i][j] > 0) count++;
 
+        if (count == mSize * mSize)
+            checkGameOver();
+
     }
+
+    //проверка на отсутствие возможного хода
+    private void checkGameOver()
+    {//смещения по х и у
+        int [] dx = {0, 1, 0, -1};
+        int [] dy = {1, 0, -1, 0};
+
+        //для каждой ячейки
+        for (int i = 0; i < mSize; i++)
+            for (int j = 0; j < mSize; j++)
+                for (int k = 0; k < 4; k++)
+                {//проверяем 4 соседние клетки
+                    int x = i + dx[k];
+                    int y = j + dy[k];
+                    //если нет выхода за предел поля
+                    if (x < mSize && x >= 0 &&
+                        y < mSize && y >= 0){
+                        if (fieldArr[i][j] == fieldArr[x][y])//если можно сделать ход
+                            return;
+                    }
+                }
+        gameOver = true;
+    }
+
+
     //делает сдвиг массива влево с "склеиванием" одинаковых элементов
     private int[] offset(int[] arr) {
         int[] result = new int[mSize];
@@ -154,6 +183,8 @@ public class Field {
                     if (k == num) {
                         fieldArr[i][j] = 2;
                         count++;
+                        if (count == mSize * mSize)
+                            checkGameOver();
                         return;
                     }
                     else k++;

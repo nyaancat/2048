@@ -8,16 +8,21 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    //private Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("2048");
+        primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, 300, 400));
         primaryStage.show();
+        //stage = primaryStage;
     }
+
+//    public Stage getPrimaryStage() {
+//        return stage;
+//    }
 
     public static void main(String[] args) {
         launch(args);
