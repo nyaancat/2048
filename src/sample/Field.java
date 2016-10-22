@@ -11,6 +11,7 @@ public class Field {
     private int mSize = 4; //размер поля
     public int[][] fieldArr = new int [mSize][mSize];
     public boolean gameOver = false;
+    public boolean win = false;
 
     Field()
     {
@@ -73,6 +74,8 @@ public class Field {
                     if (result[j - 1] != 0)
                         flag[j - 1] = true;
                     result[j - 1] += arr[i];
+                    if (!win && result[j - 1] == 2048)
+                        win = true;
                  }
                 else
                 {

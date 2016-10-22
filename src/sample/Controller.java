@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -49,6 +50,7 @@ public class Controller {
     @FXML
     private Label lbl_3_2;
 
+
     private int mSize = 4;
 
     private Field field = new Field();
@@ -59,8 +61,9 @@ public class Controller {
     private FXMLLoader fxmlLoader = new FXMLLoader();
     private WinController winController;
     private Stage winStage;
+    private boolean gotWin = false;
 
-    public boolean gameOver = true;
+  //  public boolean gameOver = true;
 
  public void initialize() {
       lblArr[0][0] = lbl_0_0;
@@ -112,9 +115,10 @@ public class Controller {
     //и соответственно обновляет его в родительском окне
     private void newWindow(ActionEvent actionEvent) {
         winController.setField(field);
+        winController.initialize();
         if (winStage == null) {
             winStage = new Stage();
-            winStage.setTitle("Game Over");
+            winStage.setTitle("2048");
             winStage.setResizable(false);
             winStage.setScene(new Scene(fxmlEdit));
             winStage.initModality(Modality.WINDOW_MODAL);
@@ -136,6 +140,12 @@ public class Controller {
 
         if (field.gameOver)
             newWindow(actionEvent);
+        else
+            if (field.win && !gotWin){
+                gotWin = true;
+                winController.setWin(true);
+                newWindow(actionEvent);
+            }
     }
 
     public void btnUpClick(ActionEvent actionEvent) {
@@ -145,6 +155,12 @@ public class Controller {
 
         if (field.gameOver)
             newWindow(actionEvent);
+        else
+            if (field.win && !gotWin){
+                gotWin = true;
+                winController.setWin(true);
+                newWindow(actionEvent);
+            }
     }
 
     public void btnRightClick(ActionEvent actionEvent) {
@@ -154,6 +170,12 @@ public class Controller {
 
         if (field.gameOver)
             newWindow(actionEvent);
+        else
+            if (field.win && !gotWin){
+                gotWin = true;
+                winController.setWin(true);
+                newWindow(actionEvent);
+            }
     }
 
     public void btnLeftClick(ActionEvent actionEvent) {
@@ -163,5 +185,11 @@ public class Controller {
 
         if (field.gameOver)
             newWindow(actionEvent);
+        else
+            if (field.win && !gotWin){
+                gotWin = true;
+                winController.setWin(true);
+                newWindow(actionEvent);
+            }
     }
 }

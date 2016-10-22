@@ -17,26 +17,52 @@ import java.io.IOException;
 
 
 public class WinController {
+
     private Field field;
+    private boolean win;
 
     @FXML
-    private Button btnRestart;
+    private Label lblWin;
     @FXML
-    Parent root;
+    private Button btnWin;
+
+    public void initialize() {
+        if (!win) {
+            lblWin.setText("Game Over");
+            btnWin.setText("Restart");
+            setWin(false);
+        }
+        else {
+            lblWin.setText("Congratulations!");
+            btnWin.setText("Ok");
+            setWin(true);
+        }
+
+    }
 
     public void setField(Field newField){
         field = newField;
     }
 
+    public void setWin(boolean f){ win = f; }
+
     public Field getField(){
         return field;
     }
 
-    public void btnRestartClick(ActionEvent actionEvent) {
-        field = new Field();
-        Node source = (Node) actionEvent.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
-        stage.hide();
+    public void btnClick(ActionEvent actionEvent) {
+        if (!win) {
+            field = new Field();
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.hide();
+        }
+        else{
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
+            stage.hide();
+        }
+
     }
 
 
