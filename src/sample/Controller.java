@@ -1,6 +1,5 @@
 package sample;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -8,13 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Color;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
-import static javafx.fxml.FXMLLoader.*;
 
 public class Controller {
     @FXML
@@ -50,20 +47,18 @@ public class Controller {
     @FXML
     private Label lbl_3_2;
 
+    @FXML
+    private Button btnLeft;
 
-    private int mSize = 4;
-
-    private Field field = new Field();
-
-    private Label[][] lblArr = new Label [mSize][mSize];
-
+    private int mSize = 4;//размер поля
+    private Field field = new Field();//поле
+    private Label[][] lblArr = new Label [mSize][mSize];//массив надписей
     private Parent fxmlEdit;
     private FXMLLoader fxmlLoader = new FXMLLoader();
-    private WinController winController;
-    private Stage winStage;
-    private boolean gotWin = false;
+    private WinController winController;//контроллер окна - наследника
+    private Stage winStage; //stage окна-наледника
+    private boolean gotWin = false; //была ли уже победа?
 
-  //  public boolean gameOver = true;
 
  public void initialize() {
       lblArr[0][0] = lbl_0_0;
@@ -83,8 +78,8 @@ public class Controller {
       lblArr[3][1] = lbl_3_1;
       lblArr[3][2] = lbl_3_2;
 
+     //сразу в инициализации один раз грузим окно-наследника
      try {
-
          fxmlLoader.setLocation(getClass().getResource("sampleWin.fxml"));
          fxmlEdit = fxmlLoader.load();
          winController = fxmlLoader.getController();
@@ -113,8 +108,9 @@ public class Controller {
 
     //создает новое окно - конец игры. проверяет, изменилось ли поле (была ли нажата кнопка рестарт)
     //и соответственно обновляет его в родительском окне
-    private void newWindow(ActionEvent actionEvent) {
+    private void newWindow() {
         winController.setField(field);
+        //устанавливает надпись и кнопку, в зависимости от того, произошел ли выигрыш или проигрыш
         winController.initialize();
         if (winStage == null) {
             winStage = new Stage();
@@ -122,9 +118,10 @@ public class Controller {
             winStage.setResizable(false);
             winStage.setScene(new Scene(fxmlEdit));
             winStage.initModality(Modality.WINDOW_MODAL);
-            winStage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            winStage.initOwner(btnLeft.getScene().getWindow());
         }
         winStage.showAndWait();
+        //если нужно, переустанавливаем поле
         if (winController.getField() != field){
             field = winController.getField();
             field.newNumber();
@@ -133,63 +130,73 @@ public class Controller {
         }
     }
 
-    public void btnDownClick(ActionEvent actionEvent) {
+    //действия для каждой из кнопок
+    //везде проверки на конец игры и на победу
+    public void btnDownClick() {
         if (field.down())
             field.newNumber();
         setField();
 
         if (field.gameOver)
-            newWindow(actionEvent);
+            newWindow();
         else
             if (field.win && !gotWin){
                 gotWin = true;
                 winController.setWin(true);
-                newWindow(actionEvent);
+                newWindow();
             }
     }
 
-    public void btnUpClick(ActionEvent actionEvent) {
+    public void btnUpClick() {
        if (field.up())
            field.newNumber();
         setField();
 
         if (field.gameOver)
-            newWindow(actionEvent);
+            newWindow();
         else
             if (field.win && !gotWin){
                 gotWin = true;
                 winController.setWin(true);
-                newWindow(actionEvent);
+                newWindow();
             }
     }
 
-    public void btnRightClick(ActionEvent actionEvent) {
+    public void btnRightClick() {
         if (field.right())
             field.newNumber();
         setField();
 
         if (field.gameOver)
-            newWindow(actionEvent);
+            newWindow();
         else
             if (field.win && !gotWin){
                 gotWin = true;
                 winController.setWin(true);
-                newWindow(actionEvent);
+                newWindow();
             }
     }
 
-    public void btnLeftClick(ActionEvent actionEvent) {
+    public void btnLeftClick() {
         if (field.left())
             field.newNumber();
         setField();
 
         if (field.gameOver)
-            newWindow(actionEvent);
+            newWindow();
         else
             if (field.win && !gotWin){
                 gotWin = true;
                 winController.setWin(true);
-                newWindow(actionEvent);
+                newWindow();
             }
+    }
+
+    //обработка клавиш-стрелок
+    public void keyPressed(KeyEvent e) {
+        if (e.getCode().equals(KeyCode.LEFT)) btnLeftClick();
+        if (e.getCode().equals(KeyCode.RIGHT)) btnRightClick();
+        if (e.getCode().equals(KeyCode.UP)) btnUpClick();
+        if (e.getCode().equals(KeyCode.DOWN)) btnDownClick();
     }
 }

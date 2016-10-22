@@ -11,135 +11,135 @@
 <?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" hgap="10" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="300.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <children>
-            <GridPane gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="260.0">
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label fx:id="lbl_2_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_1_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_2_0" text=" " GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_1_0" text=" " GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_2_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_1_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_0_2" text=" " GridPane.columnIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_0_1" text=" " GridPane.columnIndex="1">
-                     <GridPane.margin>
+    <children>
+        <VBox onKeyPressed="#keyPressed" prefHeight="400.0" prefWidth="300.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <children>
+                <GridPane alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="260.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label fx:id="lbl_2_2" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="64.0" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_1_1" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_2_0" alignment="CENTER" contentDisplay="CENTER" prefHeight="23.0" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_1_0" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_2_1" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_1_2" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_0_2" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="2">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_0_1" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="1">
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_0_0" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_3_3" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_2_3" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_1_3" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_0_3" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="3">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_3_2" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_3_1" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                        <Label fx:id="lbl_3_0" alignment="CENTER" contentDisplay="CENTER" prefWidth="64.0" text=" " textAlignment="CENTER" GridPane.rowIndex="3">
+                            <font>
+                                <Font size="18.0" />
+                            </font></Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                    </VBox.margin>
+                    <opaqueInsets>
                         <Insets />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_0_0" text=" " textAlignment="CENTER">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_3_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_2_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="2">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_1_3" text=" " GridPane.columnIndex="3" GridPane.rowIndex="1">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_0_3" text=" " GridPane.columnIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_3_2" text=" " GridPane.columnIndex="2" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_3_1" text=" " GridPane.columnIndex="1" GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <Label fx:id="lbl_3_0" text=" " GridPane.rowIndex="3">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-               </children>
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </VBox.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </GridPane>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0">
-               <top>
-                  <Button mnemonicParsing="false" onAction="#btnUpClick" text="Up" BorderPane.alignment="CENTER" />
-               </top>
-               <left>
-                  <Button mnemonicParsing="false" onAction="#btnLeftClick" text="Left" BorderPane.alignment="CENTER" />
-               </left>
-               <right>
-                  <Button mnemonicParsing="false" onAction="#btnRightClick" text="Right" BorderPane.alignment="CENTER" />
-               </right>
-               <bottom>
-                  <Button mnemonicParsing="false" onAction="#btnDownClick" text="Down" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" />
-                     </BorderPane.margin>
-                  </Button>
-               </bottom>
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-            </BorderPane>
-         </children>
-      </VBox>
-   </children>
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+                    </opaqueInsets>
+                </GridPane>
+                <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0">
+                    <top>
+                        <Button mnemonicParsing="false" onAction="#btnUpClick" text="Up" BorderPane.alignment="CENTER" />
+                    </top>
+                    <left>
+                        <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#btnLeftClick" text="Left" BorderPane.alignment="CENTER" />
+                    </left>
+                    <right>
+                        <Button mnemonicParsing="false" onAction="#btnRightClick" text="Right" BorderPane.alignment="CENTER" />
+                    </right>
+                    <bottom>
+                        <Button mnemonicParsing="false" onAction="#btnDownClick" text="Down" BorderPane.alignment="CENTER">
+                            <BorderPane.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" />
+                            </BorderPane.margin>
+                        </Button>
+                    </bottom>
+                    <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </VBox.margin>
+                </BorderPane>
+            </children>
+        </VBox>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
 </GridPane>

@@ -3,7 +3,6 @@ package sample;
 
 import java.util.Arrays;
 import java.util.Random;
-import java.util.Vector;
 
 public class Field {
 
@@ -11,13 +10,14 @@ public class Field {
     private int mSize = 4; //размер поля
     public int[][] fieldArr = new int [mSize][mSize];
     public boolean gameOver = false;
-    public boolean win = false;
+    public boolean win = false; //была ли уже победа в текущей игре (достижение 2048)
 
     Field()
-    {
+    { //инициализация
         for (int i = 0; i < mSize; i++)
             for (int j = 0; j < mSize; j++)
                 fieldArr[i][j] = 0;
+
     }
 
     //обновление количества занятых ячеек. выполняется после каждой попытки сдвига
@@ -28,7 +28,7 @@ public class Field {
             for (int j = 0; j < mSize; j++)
                 if (fieldArr[i][j] > 0) count++;
 
-        if (count == mSize * mSize)
+        if (count == mSize * mSize) //если все поле забито
             checkGameOver();
 
     }
@@ -49,42 +49,45 @@ public class Field {
                     //если нет выхода за предел поля
                     if (x < mSize && x >= 0 &&
                         y < mSize && y >= 0){
-                        if (fieldArr[i][j] == fieldArr[x][y])//если можно сделать ход
-                            return;
+                        if (fieldArr[i][j] == fieldArr[x][y])//и если можно сделать ход
+                            return; //выходим
                     }
                 }
-        gameOver = true;
+        gameOver = true; //если нет возможных ходов - конец игры
     }
 
 
     //делает сдвиг массива влево с "склеиванием" одинаковых элементов
     private int[] offset(int[] arr) {
-        int[] result = new int[mSize];
+        int[] result = new int[mSize];//складываем результат сюда
         int j = 1;
         result[0] = arr[0];
         boolean [] flag = new boolean [mSize];
 
-        for (int i = 0; i < mSize; i++)
+        for (int i = 0; i < mSize; i++)//для каждой ячейуи поля склеивание в ней должно быть только одно
             flag[i] = false;
 
         for (int i = 1; i < mSize; i++)
             if (arr[i] != 0)
-            {//если два соседних элемента одинаковые и в этой ячейке еще не происходило сложение
+            {//если два соседних элемента одинаковые(или первый = 0) и в этой ячейке еще не происходило сложение
                 if ((result[j - 1] == arr[i] || result [j - 1] == 0) && !flag[j - 1]) {
-                    if (result[j - 1] != 0)
+
+                    if (result[j - 1] != 0) //если складываем
                         flag[j - 1] = true;
+
                     result[j - 1] += arr[i];
-                    if (!win && result[j - 1] == 2048)
+
+                    if (result[j - 1] == 2048)
                         win = true;
+
                  }
-                else
-                {
+                else {
                     result[j] = arr[i];
                     j++;
                 }
             }
 
-        for (int i = j + 1; i < mSize; i++)
+        for (int i = j + 1; i < mSize; i++) //остаток забиваем пустыми ячейками
             result[j] = 0;
 
         return result;
@@ -108,6 +111,7 @@ public class Field {
                 }
             }
         }
+
         refreshCount();
         return flag;
     }
@@ -174,12 +178,12 @@ public class Field {
 
     //добавление 2 в случайную свободную ячейку. выполняется после любого успешного сдвига
     public void newNumber() {
+
         Random r = new Random(System.currentTimeMillis());
-        //System.out.println("count: " + count);
         int num = r.nextInt(mSize * mSize - count);
         int k = 0;
 
-
+        //ищем num-ую пустую ячейку на поле
         for (int i = 0; i < mSize; i++)
             for (int j = 0; j < mSize; j++) {
                 if (fieldArr[i][j] == 0){
