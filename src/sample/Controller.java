@@ -85,6 +85,9 @@ public class Controller {
     @FXML
     private Button btnLeft;
 
+    @FXML
+    private Label lblScore;
+
     private int mSize = 4;//размер поля
     private Field field = new Field();//поле
     private Label[][] lblArr = new Label [mSize][mSize];//массив надписей
@@ -146,6 +149,7 @@ public class Controller {
      field.newNumber();
 
      setField();
+     setScore();
   }
 
     private void setField () {
@@ -156,8 +160,6 @@ public class Controller {
                 else //очищение несоответствующих действительности надписей
                     if (Integer.toString(field.fieldArr[i][j]) != lblArr[i][j].getText())
                         lblArr[i][j].setText(" ");
-
-               // paneArr[0][1].setStyle("");
 
                 switch(field.fieldArr[i][j]){
                     case 2:
@@ -204,6 +206,10 @@ public class Controller {
             }
     }
 
+
+    private void setScore () {
+        lblScore.setText("Score: " + field.score);
+    }
     //создает новое окно - конец игры. проверяет, изменилось ли поле (была ли нажата кнопка рестарт)
     //и соответственно обновляет его в родительском окне
     private void newWindow() {
@@ -214,7 +220,10 @@ public class Controller {
             winStage = new Stage();
             winStage.setTitle("2048");
             winStage.setResizable(false);
-            winStage.setScene(new Scene(fxmlEdit));
+            if (field.gameOver)
+                winStage.setScene(new Scene(fxmlEdit, 200, 170));
+            else
+                winStage.setScene(new Scene(fxmlEdit, 280, 170));
             winStage.initModality(Modality.WINDOW_MODAL);
             winStage.initOwner(btnLeft.getScene().getWindow());
         }
@@ -249,6 +258,7 @@ public class Controller {
        if (field.up())
            field.newNumber();
         setField();
+        setScore();
 
         if (field.gameOver)
             newWindow();
@@ -273,6 +283,8 @@ public class Controller {
                 winController.setWin(true);
                 newWindow();
             }
+
+        setScore();
     }
 
     public void btnLeftClick() {
@@ -288,6 +300,7 @@ public class Controller {
                 winController.setWin(true);
                 newWindow();
             }
+        setScore();
     }
 
     //обработка клавиш-стрелок

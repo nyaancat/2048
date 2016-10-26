@@ -13,7 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("2048");
         primaryStage.setResizable(false);
-        Scene scene = new Scene(root, 300, 400);
+        Scene scene = new Scene(root, 300, 450);
       //  scene.getStylesheets().add(0, "style.css");
         primaryStage.setScene(scene);
         primaryStage.show();

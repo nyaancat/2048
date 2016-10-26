@@ -16,6 +16,8 @@ public class WinController {
     private Label lblWin;
     @FXML
     private Button btnWin;
+    @FXML
+    private Label lblScore;
 
     public void initialize() {
         if (!win) {
@@ -30,8 +32,14 @@ public class WinController {
         }
     }
 
-    public void setField(Field newField){
+    private void setScore () {
+        lblScore.setText("Score: " + field.score);
+    }
+
+    public void setField(Field newField)
+    {
         field = newField;
+        setScore();
     }
 
     public void setWin(boolean f){ win = f; }

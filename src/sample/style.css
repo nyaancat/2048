@@ -13,9 +13,14 @@
 .titleLbl {
       -fx-font-family: "Segoe UI Semibold";
       -fx-text-fill: #FF007F;
+      -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
 
-
+.lblScore {
+     -fx-text-fill: #CCCC00;
+     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
+      -fx-font-family: "Segoe UI Semibold";
+}
 .field{
      -fx-background-repeat: no-repeat;
      -fx-background-color: #CDCDCD;

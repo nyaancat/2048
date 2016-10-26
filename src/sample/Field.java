@@ -11,13 +11,13 @@ public class Field {
     public int[][] fieldArr = new int [mSize][mSize];
     public boolean gameOver = false;
     public boolean win = false; //была ли уже победа в текущей игре (достижение 2048)
+    public int score = 0;
 
     Field()
     { //инициализация
         for (int i = 0; i < mSize; i++)
             for (int j = 0; j < mSize; j++)
                 fieldArr[i][j] = 0;
-
     }
 
     //обновление количества занятых ячеек. выполняется после каждой попытки сдвига
@@ -73,7 +73,10 @@ public class Field {
                 if ((result[j - 1] == arr[i] || result [j - 1] == 0) && !flag[j - 1]) {
 
                     if (result[j - 1] != 0) //если складываем
+                    {
                         flag[j - 1] = true;
+                        score += arr[i] * 2;
+                    }
 
                     result[j - 1] += arr[i];
 
