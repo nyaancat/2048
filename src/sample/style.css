@@ -10,6 +10,12 @@
     -fx-font-size: 8pt;
 }
 
+.titleLbl {
+      -fx-font-family: "Segoe UI Semibold";
+      -fx-text-fill: #FF007F;
+}
+
+
 .field{
      -fx-background-repeat: no-repeat;
      -fx-background-color: #CDCDCD;

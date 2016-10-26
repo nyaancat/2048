@@ -16,7 +16,7 @@ public class Field {
     { //инициализация
         for (int i = 0; i < mSize; i++)
             for (int j = 0; j < mSize; j++)
-                fieldArr[i][j] = 0;
+                fieldArr[i][j] = (i + 1) * (j + 1);
 
     }
 
