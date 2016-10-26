@@ -1,0 +1,18 @@
+.background {
+    -fx-background-color: #FFFAE9;
+}
+
+.button {
+    -fx-color:#FFF2CD;
+    -fx-border-color: #FFEDB9;
+    -fx-border-width: 2;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 8pt;
+}
+
+.field{
+     -fx-background-repeat: no-repeat;
+     -fx-background-color: #CDCDCD;
+     -fx-border-width: 8;
+     -fx-border-color: grey;
+ }

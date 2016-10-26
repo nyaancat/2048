@@ -14,6 +14,7 @@ public class Main extends Application {
         primaryStage.setTitle("2048");
         primaryStage.setResizable(false);
         Scene scene = new Scene(root, 300, 400);
+      //  scene.getStylesheets().add(0, "style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
